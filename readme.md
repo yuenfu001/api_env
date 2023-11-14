@@ -34,9 +34,7 @@ Usage
 
     Open the main.py file and modify the locations and keywords variables to suit your specific requirements.
 
-    Run the script:
-
-    bash
+    Run the script on cmd or powershell or bash:
 
     python api.py or py api.py
 
@@ -48,5 +46,3 @@ Script Details
     The results are filtered based on the specified keywords, and the final list is stored in a CSV file.
 
 Feel free to customize the script according to your needs, such as adjusting the radius, changing the keywords, or adding more locations.
-
-Happy business list generating!
