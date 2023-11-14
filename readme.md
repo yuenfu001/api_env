@@ -38,7 +38,7 @@ Usage
 
     bash
 
-    python main.py
+    python api.py or py api.py
 
     The script will generate a CSV file named business_list.csv containing information about the businesses that match the specified keywords.
 
