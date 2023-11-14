@@ -22,7 +22,7 @@ Configuration
 
     bash
 
-git clone https://github.com/your-username/business-list-generator.git
+git clone https://github.com/yuenfu001/api_env.git
 
 Create a .env file in the project root and add your Google Places API key:
 
