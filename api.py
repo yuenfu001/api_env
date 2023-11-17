@@ -25,7 +25,9 @@ def get_places(api_key, location, radius, keywords=None):
                 'Name': result.get('name', ''),
                 'Address': result.get('vicinity', ''),
                 'Latitude': result['geometry']['location']['lat'],
-                'Longitude': result['geometry']['location']['lng']
+                'Longitude': result['geometry']['location']['lng'],
+                'Rating': result.get('rating', None),
+                'PriceLevel': result.get('price_level', None)
             }
             places.append(place_info)
 
@@ -35,26 +37,31 @@ def get_places(api_key, location, radius, keywords=None):
             break
 
         # Wait for a short time before making the next request
-        time.sleep(2)
+        time.sleep(1)
 
         # Include the next_page_token in the next request
         params['pagetoken'] = next_page_token
 
     return places
 
-api_key = config("key")
-locations = [
-    "9.05, 7.47", "9.055, 7.46", "9.0833, 7.4833", "9.0667, 7.4833", "9.0833, 7.4667", "9.0667, 7.45", "9.05, 7.4333",
+if __name__ == "__main__":
+    api_key = config("key")
+    locations = [
+        "9.095747029786386, 7.48804969180376"
 
-    ]
-radius = 10000  # in meters
-keywords = ['limited','LTD','Limited','ltd','business']  # Change this to your specific keyword
+        ]
+    # Maitama: 9.095747029786386, 7.48804969180376
+    # Jabi: 9.053617,7.432077
 
-all_places = []
+    # , "9.055, 7.46", "9.0833, 7.4833", "9.0667, 7.4833", "9.0833, 7.4667", "9.0667, 7.48", "9.05, 7.4333",
+    radius = 50000  # in meters
+    keywords = ["hotel","Lounge", "restaurant","club","suites","resort","amala","joint" ]  # Change this to your specific keyword
 
-for location in locations:
-        places = get_places(api_key, location, radius, keywords)
-        all_places.extend(places)
+    all_places = []
 
-df = pd.DataFrame(all_places)
-df.to_csv('business.csv', index=False)
+    for location in locations:
+            places = get_places(api_key, location, radius, keywords)
+            all_places.extend(places)
+
+    df = pd.DataFrame(all_places)
+    df.to_csv('flex.csv', index=False)

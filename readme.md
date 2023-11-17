@@ -1,4 +1,4 @@
-# Business List Generator
+# Location List Generator
 
 ### This Python script utilizes the Google Places API to generate a list of businesses based on specified locations and keywords. The script retrieves information about businesses within a given radius of each location and filters the results based on predefined keywords.
 
